@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madhu Kumari - Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFC2D4 100%);
+            color: #333;
+            min-height: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(196, 69, 105, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .tagline {
+            color: white;
+            font-size: 1.2em;
+            margin: 10px 0;
+            opacity: 0.95;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #C44569;
+            font-size: 2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #FFB6C1;
+            padding-bottom: 10px;
+        }
+
+        .education-item, .achievement-item {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5EC 100%);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #FF6B9D;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-item:hover, .achievement-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .education-item h3, .achievement-item h3 {
+            color: #C44569;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+
+        .education-item p, .achievement-item p {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5EC 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-top: 4px solid #FF6B9D;
+        }
+
+        .skill-category h3 {
+            color: #C44569;
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .skill-category li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FF6B9D;
+            font-weight: bold;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5EC 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #FF6B9D;
+        }
+
+        .project-card h3 {
+            color: #C44569;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(196, 69, 105, 0.4);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #C44569;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #FFB6C1;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FF6B9D;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #FF6B9D;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: #C44569;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <header><img src="https://github.com/Madhu-6201/image/blob/main/d1aa3fe0-e304-44d6-9c9e-04a6bdcd25a8.jpg?raw=true" alt="Madhu Kumari" class="profile-image" onerror="this.src=''; this.alt='Profile image failed to load'; this.style.display='none';">
+    <h1 id="name">Madhu Kumari</h1>
+    <p class="tagline" id="tagline">Computer Science Student | Technology Enthusiast</p>
+    <div class="social-links"><a href="https://www.instagram.com/_madhu___2601?igsh=MTV3aHN0cHlmanU5eg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewbox="0 0 24 24" fill="url(#instagram-gradient)"><defs>
+        <lineargradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+         <stop offset="0%" style="stop-color:#833AB4" />
+         <stop offset="50%" style="stop-color:#FD1D1D" />
+         <stop offset="100%" style="stop-color:#FCAF45" />
+        </lineargradient>
+       </defs> <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+      </svg></a> <a href="https://www.linkedin.com/in/madhu-kumari-95a705382" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg viewbox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+      </svg></a> <a href="https://github.com/Madhu-6201" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg viewbox="0 0 24 24" fill="#333"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+      </svg></a>
+    </div>
+   </header>
+   <section id="about">
+    <h2 id="about-heading">About Me</h2>
+    <p style="line-height: 1.8; font-size: 1.1em;">Hi! I am Madhu Kumari, a passionate Computer Science student currently pursuing my Master's degree (MCA) from Lovely Professional University, Punjab. I completed my Bachelor's degree (BCA) from S.N Sinha College, Jehanabad, where I developed a strong foundation in computer science and technology.</p>
+    <p style="line-height: 1.8; font-size: 1.1em; margin-top: 15px;">I have a deep interest in programming, networking, and web development. During my BCA, I worked on a group project developing an E-Commerce website, which enhanced my practical skills and teamwork abilities. I am proficient in C programming, have solid knowledge of networking concepts, and possess foundational understanding of database management.</p>
+   </section>
+   <section id="education">
+    <h2>Educational Background</h2>
+    <div class="education-item">
+     <h3>Master of Computer Applications (MCA)</h3>
+     <p><strong>University:</strong> Lovely Professional University, Punjab</p>
+     <p><strong>Status:</strong> Currently Pursuing</p>
+     <p>Advanced studies in computer science, software engineering, and emerging technologies</p>
+    </div>
+    <div class="education-item" onclick="openCertificate('https://github.com/Madhu-6201/image/blob/main/BCA%20marksheet.jpg?raw=true')">
+     <h3>Bachelor of Computer Applications (BCA)</h3>
+     <p><strong>College:</strong> S.N Sinha College, Jehanabad</p>
+     <p>Comprehensive study of computer applications, programming, and software development</p>
+    </div>
+    <div class="education-item" onclick="openCertificate('https://raw.githubusercontent.com/Madhu-6201/image/eab0dc80c0971ed4a2477569dd9d143878406a6b/12th%20marksheet.jpg')">
+     <h3>Intermediate (12th)</h3>
+     <p><strong>College:</strong> S.N Sinha College, Jehanabad</p>
+     <p>Specialized in Science stream with focus on Mathematics and Computer Science</p>
+    </div>
+    <div class="education-item" onclick="openCertificate('https://github.com/Madhu-6201/image/blob/main/10th%20marksheet.jpg?raw=true')">
+     <h3>Matriculation (10th)</h3>
+     <p><strong>School:</strong> Utkramit MS Kajisarai, Jehanabad</p>
+     <p>Foundation in core subjects and academic excellence</p>
+    </div>
+   </section>
+   <section id="skills">
+    <h2>Skills &amp; Expertise</h2>
+    <div class="skills-grid">
+     <div class="skill-category">
+      <h3>Programming</h3>
+      <ul>
+       <li>C Programming (Deep Knowledge)</li>
+       <li>Web Development</li>
+       <li>Software Development</li>
+      </ul>
+     </div>
+     <div class="skill-category">
+      <h3>Technical Skills</h3>
+      <ul>
+       <li>Computer Networking</li>
+       <li>Database Management</li>
+       <li>E-Commerce Development</li>
+      </ul>
+     </div>
+     <div class="skill-category">
+      <h3>Languages</h3>
+      <ul>
+       <li>Hindi (Native)</li>
+       <li>English (Proficient)</li>
+      </ul>
+     </div>
+    </div>
+   </section>
+   <section id="projects">
+    <h2 id="project-title">Projects</h2>
+    <div class="project-card">
+     <h3>E-Commerce Platform</h3>
+     <p><strong>Type:</strong> Group Project (BCA)</p>
+     <p style="margin-top: 10px; line-height: 1.6;">Developed a comprehensive e-commerce website as part of a collaborative team project. The platform includes features for product browsing, shopping cart functionality, and user management. This project enhanced my understanding of web development, database integration, and teamwork in software development.</p><a href="https://madhu-6201.github.io/website/" target="_blank" rel="noopener noreferrer" class="btn">View Details</a>
+    </div>
+   </section>
+   <section id="achievements">
+    <h2>Certificates &amp; Achievements</h2>
+    <div class="achievement-item" onclick="openCertificate('https://github.com/Madhu-6201/image/blob/main/Earth%20day.jpg?raw=true')">
+     <h3>Earth and Technology Competition</h3>
+     <p><strong>Date:</strong> April 22, 2022</p>
+     <p>Participated in a competition focused on the intersection of environmental sustainability and technological innovation</p>
+    </div>
+    <div class="achievement-item" onclick="openCertificate('https://github.com/Madhu-6201/image/blob/main/hackathon%20certificate.jpg?raw=true')">
+     <h3>Code-A-Thon Hackathon</h3>
+     <p><strong>Date:</strong> September 26, 2025</p>
+     <p>Participated in an intensive coding hackathon, demonstrating problem-solving skills and technical expertise under time constraints</p>
+    </div>
+   </section>
+   <section id="contact">
+    <h2 id="contact-heading">Get In Touch</h2>
+    <div class="contact-form">
+     <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em; color: #666;">I'd love to hear from you! Feel free to reach out for collaborations, opportunities, or just to connect.</p>
+     <form id="contactForm">
+      <div class="form-group"><label for="senderName">Your Name</label> <input type="text" id="senderName" name="senderName" required>
+      </div>
+      <div class="form-group"><label for="senderEmail">Your Email</label> <input type="email" id="senderEmail" name="senderEmail" required>
+      </div>
+      <div class="form-group"><label for="subject">Subject</label> <input type="text" id="subject" name="subject" required>
+      </div>
+      <div class="form-group"><label for="message">Message</label> <textarea id="message" name="message" required></textarea>
+      </div><button type="submit" class="btn" style="width: 100%;">Send Message</button>
+     </form>
+    </div>
+   </section>
+  </div>
+  <div id="certificateModal" class="modal">
+   <div class="modal-content"><button class="close-modal" onclick="closeModal()">×</button> <img id="certificateImage" src="" alt="Certificate" onerror="this.src=''; this.alt='Certificate image failed to load';">
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            name: "Madhu Kumari",
+            tagline: "Computer Science Student | Technology Enthusiast",
+            about_heading: "About Me",
+            project_title: "Projects",
+            contact_heading: "Get In Touch"
+        };
+
+        async function onConfigChange(config) {
+            document.getElementById('name').textContent = config.name || defaultConfig.name;
+            document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+            document.getElementById('about-heading').textContent = config.about_heading || defaultConfig.about_heading;
+            document.getElementById('project-title').textContent = config.project_title || defaultConfig.project_title;
+            document.getElementById('contact-heading').textContent = config.contact_heading || defaultConfig.contact_heading;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["name", config.name || defaultConfig.name],
+                ["tagline", config.tagline || defaultConfig.tagline],
+                ["about_heading", config.about_heading || defaultConfig.about_heading],
+                ["project_title", config.project_title || defaultConfig.project_title],
+                ["contact_heading", config.contact_heading || defaultConfig.contact_heading]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        function openCertificate(url) {
+            const modal = document.getElementById('certificateModal');
+            const img = document.getElementById('certificateImage');
+            img.src = url;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.classList.remove('active');
+        }
+
+        document.getElementById('certificateModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('senderName').value;
+            const email = document.getElementById('senderEmail').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            const mailtoLink = `mailto:madhu2018mk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+            
+            window.open(mailtoLink, '_blank');
+            
+            this.reset();
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9985823541fa1c49',t:'MTc2MjEwNjE4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
